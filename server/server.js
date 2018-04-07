@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/todo');
-var {User} = require('./models/User');
+var {User} = require('./models/user');
 
 var app = express();
 
@@ -22,7 +22,11 @@ app.post('/todos', (req, res) => {
 });
 
 app.get('/todos',(req,res)=>{
-	
+  Todo.find().then((docs)=>{
+    res.send({docs});
+  },(e)=>{
+    res.status(400).send(e);
+  });	
 });
 
 app.listen(3000, () => {
