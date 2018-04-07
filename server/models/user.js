@@ -1,6 +1,6 @@
 
 const mongoose=require('mongoose');
-const user=mongoose.model('User',{
+const User=mongoose.model('User',{
 	email:{
 		type: String,
 		minlength:1,
@@ -10,4 +10,4 @@ const user=mongoose.model('User',{
   }
 });
 
-module.exports={user};
+module.exports={User};
